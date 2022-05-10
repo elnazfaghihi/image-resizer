@@ -1,0 +1,26 @@
+spring:
+  profiles:
+    active: cloud
+  jpa:
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+source-root-url: https://www.debijenkorf.nl/INTERSHOP/static/WFS/dbk-shop-Site/-/dbk-shop/nl_NL/product-images/
+cloud:
+  aws:
+    credentials:
+      s3-endpoint: https://s3.eu-west-2.amazonaws.com/sample-bucket/resources/resizedImages/
+      access-key:
+      secret-key:
+    region:
+      static: us-east-2
+    stack:
+      auto: false
+retry:
+  maxAttempts: 1
+  maxDelay: 200
+
+application:
+  bucket:
+    name: testBucket

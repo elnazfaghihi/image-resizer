@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout
+                    pattern="%d{yyyy-MMM-dd hh:mm:ss a} %level %c - %m %n" />
+        </Console>
+        <JDBC name="db_logs" tableName="EVENT_LOGS">
+
+            <!-- If Using then JNDI DateSource -->
+            <!-- <DataSource jndiName="java:/comp/env/jdbc/LoggingDataSource" /> -->
+
+            <ConnectionFactory
+                    class="com.debijenkorf.elnazfaghihiimageServiceassignment.config.log.ConnectionFactory"
+                    method="getConnection" />
+            <Column name="ID" pattern="%u" />
+            <Column name="DATE_TIME" isEventTimestamp="true" />
+            <Column name="CLASS" pattern="%logger" />
+            <Column name="LEVEL" pattern="%level" />
+            <Column name="MESSAGE" pattern="%message" />
+            <Column name="EXCEPTION" pattern="%ex{full}" isClob="true"/>
+        </JDBC>
+    </Appenders>
+
+    <Loggers>
+        <Root level="trace">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="dbLogsStore" />
+        </Root>
+    </Loggers>
+
+</Configuration>

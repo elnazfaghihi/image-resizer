@@ -1,0 +1,8 @@
+logdb:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    jdbcurl: jdbc:mysql://localhost:3306/db_logs
+    username: root
+    password: root
+logging:
+  config: classpath:log/log4j2-cloud.xml
